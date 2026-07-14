@@ -7,6 +7,16 @@ import {
   BarChart3, Briefcase, Scale, ChevronRight, ArrowDown, ArrowUp,
 } from "lucide-react";
 
+
+const openCalendly = (e: React.MouseEvent) => {
+  e.preventDefault();
+  if ((window as any).Calendly) {
+    (window as any).Calendly.initPopupWidget({ url: 'https://calendly.com/rehanjoe06' });
+  } else {
+    window.open('https://calendly.com/rehanjoe06', '_blank');
+  }
+};
+
 const fadeUp: Variants = {
   hidden: { opacity: 0, y: 24 },
   show: { opacity: 1, y: 0, transition: { duration: 0.7, ease: [0.22, 1, 0.36, 1] as any } },
@@ -163,7 +173,7 @@ function Nav() {
             <a href="#why" className="hover:text-foreground transition">Why SynapseOS</a>
           </nav>
           <div className="flex items-center gap-2">
-            <a href="mailto:Rehanjoe06@gmail.com" className="text-sm px-4 py-2 rounded-lg font-medium text-black relative overflow-hidden group" style={{ background: "var(--gradient-brand)" }}>
+            <a href="#" onClick={openCalendly} className="text-sm px-4 py-2 rounded-lg font-medium text-black relative overflow-hidden group" style={{ background: "var(--gradient-brand)" }}>
               <span className="relative z-10">Request Demo</span>
             </a>
           </div>
@@ -189,24 +199,24 @@ function Hero() {
         </Reveal>
         <Reveal delay={0.1}>
           <h1 className="font-display text-5xl sm:text-6xl md:text-7xl font-bold tracking-tight leading-[1.05]">
-            The AI Intelligence Layer<br />That Makes Your Company{" "}
-            <span className="text-gradient-brand animate-gradient inline-block">Think.</span>
+            AI Intelligence That Understands<br />Your{" "}
+            <span className="text-gradient-brand animate-gradient inline-block">Business.</span>
           </h1>
         </Reveal>
         <Reveal delay={0.2}>
-          <p className="mt-8 max-w-3xl mx-auto text-lg text-muted-foreground leading-relaxed">
+          <p className="mt-8 max-w-3xl mx-auto text-xl md:text-2xl text-muted-foreground leading-relaxed">
             SynapseOS connects your people, systems, knowledge, and decisions into one living intelligence that understands your business, predicts risks, and helps your organization act faster.
           </p>
           <p className="mt-6 max-w-4xl mx-auto text-base text-muted-foreground leading-relaxed">
             Every company generates enormous amounts of knowledge. Customer conversations. Meetings. Emails. Projects. Financial data. Product decisions. Engineering work. Operational processes. Over time, this knowledge becomes scattered across hundreds of systems and thousands of conversations.
           </p>
           <p className="mt-6 max-w-3xl mx-auto text-base font-medium text-white leading-relaxed">
-            Your company has the information. But no one—not even AI—understands how it all connects. SynapseOS changes that.
+            Your company has the information. But no one, not even AI, understands how it all connects. SynapseOS changes that.
           </p>
         </Reveal>
         <Reveal delay={0.3}>
           <div className="mt-10 flex flex-wrap items-center justify-center gap-3">
-            <a href="mailto:Rehanjoe06@gmail.com" className="group inline-flex items-center gap-2 px-6 py-3.5 rounded-xl font-semibold text-black glow-cyan"
+            <a href="#" onClick={openCalendly} className="group inline-flex items-center gap-2 px-6 py-3.5 rounded-xl font-semibold text-black glow-cyan"
               style={{ background: "var(--gradient-brand)" }}>
               Request a Demo
               <ArrowRight className="w-4 h-4 group-hover:translate-x-1 transition" />
@@ -223,42 +233,55 @@ function Hero() {
 
 /* ===================== PROBLEM ===================== */
 function Problem() {
-  const tools = ["Salesforce", "GitHub", "Slack", "Notion", "Jira", "Zoom", "Gmail", "Figma", "Snowflake", "Linear", "HubSpot", "Asana"];
+  const tools1 = ["salesforce", "github", "slack", "notion", "jira", "zoom", "gmail", "figma", "snowflake"];
+  const tools2 = ["linear", "hubspot", "asana", "datadog", "zendesk", "stripe", "docker", "sentry", "amazonaws"];
+  
   return (
-    <section className="relative py-32">
-      <div className="mx-auto max-w-6xl px-6">
-        <div className="grid md:grid-cols-2 gap-16 items-center">
-          <div>
-            <Reveal>
-              <div className="text-xs tracking-[0.2em] text-muted-foreground mb-4">THE PROBLEM</div>
-              <h2 className="font-display text-4xl md:text-5xl font-bold tracking-tight leading-tight">
-                Your Company Is Losing Millions To Problems It Can't See
-              </h2>
-            </Reveal>
-            <Reveal delay={0.1}>
-              <div className="mt-6 space-y-4 text-base text-muted-foreground leading-relaxed">
-                <p>The biggest threats to your business rarely arrive without warning. They grow quietly. A strategic customer slowly becomes dissatisfied. A product release slips by weeks. A critical dependency blocks multiple teams. Revenue starts slowing. Costs begin increasing. Execution becomes slower every quarter.</p>
-                <p>The warning signs already existed. But they were buried inside CRM records, support tickets, Slack conversations, emails, meeting notes, spreadsheets, documents, dashboards, and dozens of disconnected applications. Nobody connected the dots.</p>
-                <p>Leadership only discovers the problem after the customer leaves. After revenue declines. After deadlines are missed. After the opportunity is gone.</p>
-                <p className="text-white font-medium">The cost isn't missing data. The cost is discovering the truth too late. Every delayed decision becomes lost revenue. Every hidden dependency becomes operational cost. Every missed signal becomes a competitive disadvantage.</p>
-                <p>The larger your company becomes, the more invisible these problems become.</p>
-              </div>
-            </Reveal>
+    <section id="problem" className="relative py-32 bg-black/50 overflow-hidden">
+      <div className="mx-auto max-w-5xl px-6 text-center">
+        <Reveal>
+          <div className="text-xs tracking-[0.2em] text-muted-foreground mb-4">THE PROBLEM</div>
+          <h2 className="font-display text-4xl md:text-5xl font-bold tracking-tight leading-tight max-w-4xl mx-auto">
+            Your Company Is Losing Millions To Problems <span className="text-gradient-brand">It Can't See</span>
+          </h2>
+        </Reveal>
+        
+        <Reveal delay={0.1}>
+          <div className="mt-10 space-y-6 text-lg md:text-xl text-muted-foreground leading-relaxed max-w-3xl mx-auto">
+            <p className="italic text-white">
+              "The biggest threats to your business don't arrive overnight, they grow quietly."
+            </p>
+            <p className="text-base md:text-lg">
+              A key customer becomes dissatisfied. Projects slip. Teams get blocked. Revenue slows. Costs rise. The warning signs already exist, buried across CRM records, support tickets, Slack, emails, meeting notes, spreadsheets, dashboards, and disconnected applications.
+            </p>
+            <p className="italic text-white">
+              "The real cost isn't missing data, it's discovering the truth too late. Every delayed decision means lost revenue, higher costs, and missed opportunities."
+            </p>
+            <p className="text-base md:text-lg text-white font-medium">
+              The larger your company grows, the harder these problems become to see.
+            </p>
           </div>
-          <Reveal delay={0.2}>
-            <motion.div variants={stagger} initial="hidden" whileInView="show" viewport={{ once: true }}
-              className="grid grid-cols-3 gap-3">
-              {tools.map((t) => (
-                <motion.div key={t} variants={fadeUp}
-                  className="aspect-square glass rounded-2xl flex flex-col items-center justify-center gap-2 grayscale opacity-40 hover:opacity-70 hover:grayscale-0 transition">
-                  <img src={`https://cdn.jsdelivr.net/npm/simple-icons@v11/icons/${t.toLowerCase()}.svg`} alt={t} className="w-8 h-8 opacity-70 invert" />
-                  <div className="text-[10px] text-muted-foreground">{t}</div>
-                </motion.div>
-              ))}
-            </motion.div>
-          </Reveal>
-        </div>
+        </Reveal>
       </div>
+      
+      <Reveal delay={0.2}>
+        <div className="mt-20 flex flex-col gap-6 overflow-hidden [mask-image:linear-gradient(to_right,transparent,black_10%,black_90%,transparent)]">
+          <motion.div className="flex gap-6 w-max" animate={{ x: ["0%", "-50%"] }} transition={{ duration: 35, ease: "linear", repeat: Infinity }}>
+            {[...tools1, ...tools1].map((t, i) => (
+              <div key={i} className="flex items-center justify-center gap-3 w-40 h-16 glass rounded-2xl grayscale opacity-50 hover:grayscale-0 hover:opacity-100 transition shrink-0">
+                <img src={`https://cdn.jsdelivr.net/npm/simple-icons@v11/icons/${t}.svg`} className="w-7 h-7 invert" />
+              </div>
+            ))}
+          </motion.div>
+          <motion.div className="flex gap-6 w-max" animate={{ x: ["-50%", "0%"] }} transition={{ duration: 40, ease: "linear", repeat: Infinity }}>
+            {[...tools2, ...tools2].map((t, i) => (
+              <div key={i} className="flex items-center justify-center gap-3 w-40 h-16 glass rounded-2xl grayscale opacity-50 hover:grayscale-0 hover:opacity-100 transition shrink-0">
+                <img src={`https://cdn.jsdelivr.net/npm/simple-icons@v11/icons/${t}.svg`} className="w-7 h-7 invert" />
+              </div>
+            ))}
+          </motion.div>
+        </div>
+      </Reveal>
     </section>
   );
 }
@@ -917,7 +940,7 @@ function Stack() {
               Your business already has the people. The systems. The data. The knowledge. What it's missing is an intelligence layer that brings everything together. Build the next generation of enterprise intelligence with SynapseOS.
             </p>
             <div className="mt-8 flex flex-wrap justify-center gap-3" style={{ transform: "translateZ(40px)" }}>
-              <Magnetic><a href="mailto:Rehanjoe06@gmail.com" className="group inline-flex items-center gap-2 px-7 py-4 rounded-xl font-semibold text-black glow-cyan" style={{ background: "var(--gradient-brand)" }}>Request a Demo <ArrowRight className="w-4 h-4 group-hover:translate-x-1 transition" /></a></Magnetic>
+              <Magnetic><a href="#" onClick={openCalendly} className="group inline-flex items-center gap-2 px-7 py-4 rounded-xl font-semibold text-black glow-cyan" style={{ background: "var(--gradient-brand)" }}>Request a Demo <ArrowRight className="w-4 h-4 group-hover:translate-x-1 transition" /></a></Magnetic>
               <a href="tel:+918110929028" className="inline-flex items-center gap-2 px-7 py-4 rounded-xl font-semibold glass hover:bg-white/5 transition">
                 Talk to Our Team
               </a>
