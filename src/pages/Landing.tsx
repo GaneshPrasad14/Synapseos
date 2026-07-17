@@ -11,9 +11,9 @@ import {
 const openCalendly = (e: React.MouseEvent) => {
   e.preventDefault();
   if ((window as any).Calendly) {
-    (window as any).Calendly.initPopupWidget({ url: 'https://calendly.com/rehanjoe06' });
+    (window as any).Calendly.initPopupWidget({ url: 'https://calendly.com/rehanjoe06/30min' });
   } else {
-    window.open('https://calendly.com/rehanjoe06', '_blank');
+    window.open('https://calendly.com/rehanjoe06/30min', '_blank');
   }
 };
 
@@ -190,7 +190,7 @@ function Hero() {
       <div className="absolute inset-0 -z-10 bg-brand-radial" />
       <div className="absolute inset-0 -z-10 bg-grid opacity-30 [mask-image:radial-gradient(ellipse_at_center,black,transparent_70%)]" />
 
-      <div className="mx-auto max-w-5xl px-6 text-center">
+      <div className="mx-auto max-w-6xl px-6 text-center">
         <Reveal>
           <div className="inline-flex items-center gap-2 glass rounded-full px-4 py-1.5 text-xs tracking-[0.2em] font-medium mb-8">
             <span className="w-1.5 h-1.5 rounded-full animate-pulse" style={{ background: "#00F0FF", boxShadow: "0 0 10px #00F0FF" }} />
@@ -233,55 +233,101 @@ function Hero() {
 
 /* ===================== PROBLEM ===================== */
 function Problem() {
-  const tools1 = ["salesforce", "github", "slack", "notion", "jira", "zoom", "gmail", "figma", "snowflake"];
-  const tools2 = ["linear", "hubspot", "asana", "datadog", "zendesk", "stripe", "docker", "sentry", "amazonaws"];
+  const tools1 = ["salesforce", "github", "slack", "notion"];
+  const tools2 = ["jira", "zoom", "gmail", "figma"];
+  const tools3 = ["snowflake", "linear", "hubspot", "datadog"];
   
   return (
     <section id="problem" className="relative py-32 bg-black/50 overflow-hidden">
-      <div className="mx-auto max-w-5xl px-6 text-center">
-        <Reveal>
-          <div className="text-xs tracking-[0.2em] text-muted-foreground mb-4">THE PROBLEM</div>
-          <h2 className="font-display text-4xl md:text-5xl font-bold tracking-tight leading-tight max-w-4xl mx-auto">
-            Your Company Is Losing Millions To Problems <span className="text-gradient-brand">It Can't See</span>
-          </h2>
-        </Reveal>
+      <div className="mx-auto max-w-7xl px-6 grid lg:grid-cols-2 gap-16 lg:gap-12 items-center">
+        {/* Left Side: Text */}
+        <div>
+          <Reveal>
+            <div className="text-xs tracking-[0.2em] text-muted-foreground mb-4">THE PROBLEM</div>
+            <h2 className="font-display text-4xl md:text-5xl font-bold tracking-tight leading-tight">
+              Your Company Is Losing Millions To Problems <span className="text-gradient-brand">It Can't See</span>
+            </h2>
+          </Reveal>
+          
+          <Reveal delay={0.1}>
+            <div className="mt-8 space-y-6 text-lg text-muted-foreground leading-relaxed">
+              <p className="italic text-white">
+                "The biggest threats to your business don't arrive overnight, they grow quietly."
+              </p>
+              <p className="text-base md:text-lg">
+                A key customer becomes dissatisfied. Projects slip. Teams get blocked. Revenue slows. Costs rise. The warning signs already exist, buried across CRM records, support tickets, Slack, emails, meeting notes, spreadsheets, dashboards, and disconnected applications.
+              </p>
+              <p className="italic text-white">
+                "The real cost isn't missing data, it's discovering the truth too late. Every delayed decision means lost revenue, higher costs, and missed opportunities."
+              </p>
+              <p className="text-base md:text-lg text-white font-medium">
+                The larger your company grows, the harder these problems become to see.
+              </p>
+            </div>
+          </Reveal>
+        </div>
         
-        <Reveal delay={0.1}>
-          <div className="mt-10 space-y-6 text-lg md:text-xl text-muted-foreground leading-relaxed max-w-3xl mx-auto">
-            <p className="italic text-white">
-              "The biggest threats to your business don't arrive overnight, they grow quietly."
-            </p>
-            <p className="text-base md:text-lg">
-              A key customer becomes dissatisfied. Projects slip. Teams get blocked. Revenue slows. Costs rise. The warning signs already exist, buried across CRM records, support tickets, Slack, emails, meeting notes, spreadsheets, dashboards, and disconnected applications.
-            </p>
-            <p className="italic text-white">
-              "The real cost isn't missing data, it's discovering the truth too late. Every delayed decision means lost revenue, higher costs, and missed opportunities."
-            </p>
-            <p className="text-base md:text-lg text-white font-medium">
-              The larger your company grows, the harder these problems become to see.
-            </p>
+        {/* Right Side: Visual Example */}
+        <Reveal delay={0.2}>
+          <div className="relative h-[500px] glass-strong rounded-3xl overflow-hidden flex items-center justify-center border border-white/10 shadow-2xl">
+            {/* Background gradient */}
+            <div className="absolute inset-0 bg-gradient-to-br from-red-500/10 to-transparent opacity-50" />
+            
+            <div className="relative w-full h-full flex flex-col justify-center gap-6 px-4 [mask-image:linear-gradient(to_bottom,transparent,black_10%,black_90%,transparent)]">
+              {/* Marquee Row 1 */}
+              <motion.div className="flex gap-4 w-max opacity-40" animate={{ x: ["0%", "-50%"] }} transition={{ duration: 25, ease: "linear", repeat: Infinity }}>
+                {[...tools1, ...tools1, ...tools1, ...tools1].map((t, i) => (
+                  <div key={i} className="flex items-center gap-3 w-32 h-14 glass rounded-xl justify-center shrink-0 border border-white/5">
+                    <img src={`https://cdn.jsdelivr.net/npm/simple-icons@v11/icons/${t}.svg`} className="w-6 h-6 invert opacity-80" />
+                  </div>
+                ))}
+              </motion.div>
+              
+              {/* Warning Alert Example */}
+              <motion.div 
+                initial={{ opacity: 0, scale: 0.9, y: 20 }}
+                whileInView={{ opacity: 1, scale: 1, y: 0 }}
+                viewport={{ once: true }}
+                transition={{ duration: 0.8, delay: 0.5, type: "spring" }}
+                className="w-full max-w-sm mx-auto bg-black/80 backdrop-blur-2xl border border-red-500/30 rounded-2xl p-6 shadow-[0_0_40px_rgba(255,0,0,0.15)] relative z-10"
+              >
+                <div className="flex items-start gap-4">
+                  <div className="w-12 h-12 rounded-full bg-red-500/20 flex items-center justify-center shrink-0 border border-red-500/30">
+                    <ShieldAlert className="w-6 h-6 text-red-400" />
+                  </div>
+                  <div>
+                    <div className="text-base font-semibold text-white">Critical Pattern Detected</div>
+                    <div className="text-sm text-muted-foreground mt-2 leading-relaxed">
+                      Negative sentiment escalating across <span className="text-white font-medium">Zendesk</span> tickets, <span className="text-white font-medium">Slack</span> channels, and <span className="text-white font-medium">Salesforce</span> logs. 
+                      <div className="mt-2 inline-flex items-center gap-1.5 px-2.5 py-1 rounded-md bg-red-500/20 text-red-400 text-xs font-semibold">
+                        High Churn Risk
+                      </div>
+                    </div>
+                  </div>
+                </div>
+              </motion.div>
+
+              {/* Marquee Row 2 */}
+              <motion.div className="flex gap-4 w-max opacity-40" animate={{ x: ["-50%", "0%"] }} transition={{ duration: 30, ease: "linear", repeat: Infinity }}>
+                {[...tools2, ...tools2, ...tools2, ...tools2].map((t, i) => (
+                  <div key={i} className="flex items-center gap-3 w-32 h-14 glass rounded-xl justify-center shrink-0 border border-white/5">
+                    <img src={`https://cdn.jsdelivr.net/npm/simple-icons@v11/icons/${t}.svg`} className="w-6 h-6 invert opacity-80" />
+                  </div>
+                ))}
+              </motion.div>
+              
+              {/* Marquee Row 3 */}
+              <motion.div className="flex gap-4 w-max opacity-40" animate={{ x: ["0%", "-50%"] }} transition={{ duration: 20, ease: "linear", repeat: Infinity }}>
+                {[...tools3, ...tools3, ...tools3, ...tools3].map((t, i) => (
+                  <div key={i} className="flex items-center gap-3 w-32 h-14 glass rounded-xl justify-center shrink-0 border border-white/5">
+                    <img src={`https://cdn.jsdelivr.net/npm/simple-icons@v11/icons/${t}.svg`} className="w-6 h-6 invert opacity-80" />
+                  </div>
+                ))}
+              </motion.div>
+            </div>
           </div>
         </Reveal>
       </div>
-      
-      <Reveal delay={0.2}>
-        <div className="mt-20 flex flex-col gap-6 overflow-hidden [mask-image:linear-gradient(to_right,transparent,black_10%,black_90%,transparent)]">
-          <motion.div className="flex gap-6 w-max" animate={{ x: ["0%", "-50%"] }} transition={{ duration: 35, ease: "linear", repeat: Infinity }}>
-            {[...tools1, ...tools1].map((t, i) => (
-              <div key={i} className="flex items-center justify-center gap-3 w-40 h-16 glass rounded-2xl grayscale opacity-50 hover:grayscale-0 hover:opacity-100 transition shrink-0">
-                <img src={`https://cdn.jsdelivr.net/npm/simple-icons@v11/icons/${t}.svg`} className="w-7 h-7 invert" />
-              </div>
-            ))}
-          </motion.div>
-          <motion.div className="flex gap-6 w-max" animate={{ x: ["-50%", "0%"] }} transition={{ duration: 40, ease: "linear", repeat: Infinity }}>
-            {[...tools2, ...tools2].map((t, i) => (
-              <div key={i} className="flex items-center justify-center gap-3 w-40 h-16 glass rounded-2xl grayscale opacity-50 hover:grayscale-0 hover:opacity-100 transition shrink-0">
-                <img src={`https://cdn.jsdelivr.net/npm/simple-icons@v11/icons/${t}.svg`} className="w-7 h-7 invert" />
-              </div>
-            ))}
-          </motion.div>
-        </div>
-      </Reveal>
     </section>
   );
 }
@@ -656,7 +702,7 @@ function Orchestrator() {
   ];
   return (
     <section className="relative py-32">
-      <div className="mx-auto max-w-6xl px-6">
+      <div className="mx-auto max-w-7xl px-6">
         <div className="text-center max-w-3xl mx-auto">
           <Reveal>
             <div className="text-xs tracking-[0.2em] text-muted-foreground mb-4">THE ORCHESTRATOR</div>
@@ -906,7 +952,7 @@ function Stack() {
   return (
     <section id="demo" className="relative py-32 overflow-hidden" style={{ perspective: "1000px" }}>
       <div className="absolute inset-0 -z-10 bg-brand-radial opacity-70" />
-      <div className="mx-auto max-w-6xl px-6">
+      <div className="mx-auto max-w-7xl px-6">
         <div className="text-center max-w-3xl mx-auto">
           <Reveal>
             <div className="text-xs tracking-[0.2em] text-muted-foreground mb-4">THE FUTURE</div>
